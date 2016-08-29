@@ -3,10 +3,17 @@
 var gulp = require('gulp'),
   concat = require('gulp-concat'),
   uglify = require('gulp-uglify'),
-  rename = require('gulp-rename'),
 cleanCSS = require('gulp-clean-css'),
+ htmlmin = require('gulp-htmlmin'),
+  rename = require('gulp-rename'),
     maps = require('gulp-sourcemaps'),
      del = require('del');
+
+gulp.task('minifyHtml', function() {
+  return gulp.src('index.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('dist'));
+});
 
 gulp.task("concatCss", function() {
     return gulp.src([
@@ -61,8 +68,8 @@ gulp.task('clean', function() {
   del(['js/main*.js*', 'css/main*.css*']);
 });
 
-gulp.task("build", ['minifyScripts', 'minifyCss'], function() {
-  return gulp.src(["css/main.min.css", "js/main.min.js", 'index.html',
+gulp.task("build", ['minifyScripts', 'minifyCss', 'minifyHtml'], function() {
+  return gulp.src(["css/main.min.css", "js/main.min.js",
                    "img/**"], { base: './'})
             .pipe(gulp.dest('dist'));
 });

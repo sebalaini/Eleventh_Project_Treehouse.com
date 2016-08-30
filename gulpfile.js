@@ -19,8 +19,6 @@ gulp.task("concatCss", function() {
     return gulp.src([
         'css/normalize.css',
         'css/foundation.css',
-        'css/arvo.css',
-        'css/ubuntu.css',
         'css/basics.css',
         'css/menu.css',
         'css/hero.css',

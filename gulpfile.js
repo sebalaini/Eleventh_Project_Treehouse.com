@@ -74,7 +74,7 @@ gulp.task('clean', function() {
   del(['js/main*.js*', 'css/main*.css*']);
 });
 
-gulp.task("build", ['minifyScripts', 'minifyCss', 'minifyHtml', 'watchCss', 'watchJS',], function() {
+gulp.task("build", [ 'watchCss', 'watchJS', 'minifyScripts', 'minifyCss', 'minifyHtml'], function() {
   return gulp.src(["css/main.min.css", "js/main.min.js",
                    "img/**"], { base: './'})
             .pipe(gulp.dest('dist'));

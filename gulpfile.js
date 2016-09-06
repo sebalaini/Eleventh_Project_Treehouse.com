@@ -55,7 +55,7 @@ gulp.task("concatScripts", function() {
     .pipe(gulp.dest('js'));
 });
 
-gulp.task("minifyScripts", ["concatScripts","minifyCss"], function() {
+gulp.task("minifyScripts", ["concatScripts"], function() {
   return gulp.src("js/main.js")
     .pipe(uglify())
     .pipe(rename('main.min.js'))
@@ -67,7 +67,7 @@ gulp.task('watchCss', function() {
 })
 
 gulp.task('watchJS', function() {
-  gulp.watch('js/*.js', ['concatScripts', "minifyScripts"]);
+  gulp.watch('js/*.js', ['concatScripts']);
 })
 
 gulp.task('clean', function() {
